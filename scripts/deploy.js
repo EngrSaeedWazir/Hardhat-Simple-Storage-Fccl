@@ -1,15 +1,27 @@
 //import
+const { ethers } = require("hardhat")
 
 //async main
-async function main() {}
+async function main() {
+    const SimpleStorageFactory = await ethers.getContractFactory(
+        "SimpleStorage"
+    )
+    console.log("Deploying Contract...")
+    const simpleStorage = await SimpleStorageFactory.deploy()
+    await simpleStorage.deployed()
+
+    //What's the private key?
+    //what's the rpc URL?
+    console.log(`Deployed Contract to: ${simpleStorage.address}`)
+}
 
 //main
 main()
-  .then(() => process.exit(0))
-  .catch((error) => {
-    console.error(error);
-    process.exit(1);
-  });
+    .then(() => process.exit(0))
+    .catch((error) => {
+        console.error(error)
+        process.exit(1)
+    })
 
 //Below is by Default code
 
